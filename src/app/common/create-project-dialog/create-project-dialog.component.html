@@ -1,0 +1,9 @@
+<div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value, form.valid)">
+    <md-input [formControl]="form.controls['title']" placeholder="Project title"></md-input>
+
+    <button md-raised-button color="primary" type="submit">Save</button>
+    <button md-raised-button color="secondary" type="button" (click)="dialogRef.close('cancel')">Cancel</button>
+  </form>
+</div>
