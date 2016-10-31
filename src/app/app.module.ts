@@ -14,26 +14,23 @@ import { HomeComponent } from './containers/home/home.component';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
-import { CreateProjectDialogComponent } from './common/create-project-dialog/create-project-dialog.component';
 import { ProjectService } from './services/project.service';
 import { ProjectEffects } from './effects/project';
 import { ProjectsEffects } from './effects/projects';
+import { ProjectComponent } from './containers/project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateProjectDialogComponent
-  ],
-  entryComponents: [
-    CreateProjectDialogComponent
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: false }),
     NgSemanticModule,
 
     StoreModule.provideStore(reducer),

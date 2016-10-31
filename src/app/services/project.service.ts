@@ -22,6 +22,11 @@ export class ProjectService {
             .map((res: Response) => res.json());
     }
 
+    get(id): Observable<Project> {
+        return this.http.get('/api/project/' + id)
+            .map((res: Response) => res.json());
+    }
+
     delete(project: Project): Observable<Project> {
         return this.http.delete('/api/project/' + project._id)
             .map((res: Response) => res.json());

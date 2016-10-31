@@ -10,13 +10,19 @@ import { Project } from '../models/project.interface';
 @Injectable()
 export class ProjectEffects {
 
-  constructor(
-    private actions$: Actions,
-    private svc: ProjectService
-  ) { }
+    constructor(
+        private actions$: Actions,
+        private svc: ProjectService
+    ) { }
 
-  @Effect()
-  select$: Observable<Action> = this.actions$
-    .ofType(ProjectActions.ActionTypes.SELECT)
-    .map(action => new ProjectActions.SelectCompleteAction(action.payload));
+    @Effect()
+    select$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.SELECT)
+        .map(action => new ProjectActions.SelectCompleteAction(action.payload));
+
+    @Effect()
+    get$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.GET)
+        .switchMap((action) => this.svc.get(action.payload))
+        .map(project => new ProjectActions.GetCompleteAction(project));
 }

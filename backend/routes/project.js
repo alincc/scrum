@@ -2,6 +2,16 @@ var express = require('express');
 var router = express.Router();
 var ProjectModel = require('../models/Project');
 
+router.get('/:id', (req, res) => {
+  ProjectModel.findById(req.params.id, function(err, obj) {
+    if (err) {
+        return res.status(500).json(err);
+    }
+
+    return res.json(obj);
+  })
+});
+
 router.delete('/:id', (req, res) => {
   ProjectModel.findByIdAndRemove(req.params.id, function(err, obj) {
     if (err) {
@@ -26,7 +36,7 @@ router.post('/', (req, res) => {
 });
 
 // List all projects
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
 
     ProjectModel.find(function(err, response) {
         if (err) {
