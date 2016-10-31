@@ -22,7 +22,11 @@ export class BoardDetailComponent implements OnInit {
     ngOnInit() {}
 
     addFeature(title): void {
-        this.featureEmitter.emit(title);
+        let feature: Feature = {
+            title: title
+        };
+
+        this.featureEmitter.emit({feature});
     }
 
     deleteFeature(feature: Feature): void {

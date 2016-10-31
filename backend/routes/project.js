@@ -53,9 +53,7 @@ router.put('/:id/add-feature', (req, res) => {
     ProjectModel.findById(req.params.id, (err, project) => {
         if (err) return res.status(500).json(err);
 
-        var feature = new FeatureModel({
-            title: req.body.title
-        });
+        var feature = new FeatureModel(req.body.feature);
 
         feature.save((err) => {
             if (err) return res.status(500).json(err);

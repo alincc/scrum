@@ -23,6 +23,10 @@ export class ProjectService {
             .map((res: Response) => res.json());
     }
 
+    select(project: Project): void {
+        localStorage.setItem('selectedProject', JSON.stringify(project));
+    }
+
     update(project: Project): Observable<Project> {
         return this.http.put('/api/project/' + project._id, project)
             .map((res: Response) => res.json());

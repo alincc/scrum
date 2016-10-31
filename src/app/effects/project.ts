@@ -19,7 +19,10 @@ export class ProjectEffects {
     select$: Observable<Action> = this.actions$
         .ofType(ProjectActions.ActionTypes.SELECT)
         .switchMap((action) => this.svc.get(action.payload._id))
-        .map(project => new ProjectActions.SelectCompleteAction(project));
+        .map(project => {
+            this.svc.select(project);
+            return new ProjectActions.SelectCompleteAction(project)
+        });
 
     @Effect()
     get$: Observable<Action> = this.actions$

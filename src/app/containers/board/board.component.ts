@@ -40,12 +40,8 @@ export class BoardComponent implements OnInit {
         }
     }
 
-    addFeature(title) {
+    addFeature(feature) {
         if (this.project) {
-            let feature: Feature = {
-                title: title
-            };
-
             this.store.dispatch(new ProjectActions.AddFeatureAction({project: this.project, feature: feature}));
         }
         else {
