@@ -1,7 +1,42 @@
-<div>
+<div class="ui container">
 
-  <md-card>
-     <button md-raised-button color="primary" (click)="openDialog()">Create project</button>
-  </md-card>
+    <sm-modal title="Hello from Modal" class="" icon="home" #myModalNormal>
+
+        <modal-content>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value, form.valid)" class="ui form">
+                <div class="field">
+                    <sm-input [formControl]="form.controls['title']" ngDefaultControl placeholder="Project title"></sm-input>
+                </div>
+
+                <sm-button class="positive" type="submit">Save</sm-button>
+            </form>
+
+        </modal-content>
+        <modal-actions>
+
+            <div class="ui buttons">
+                <div class="ui button primary" (click)="myModalNormal.hide()">Close modal</div>
+            </div>
+
+        </modal-actions>
+
+    </sm-modal>
+
+    <button class="ui button primary" (click)="myModalNormal.show({inverted: true})">Click me</button>
+
+    <div>
+        <sm-list>
+            <sm-item *ngFor="let project of projects$ | async">
+                <div class="right floated content">
+                    <sm-button class="mini" (click)="selectProject(project)">Select</sm-button>
+                    <sm-button class="mini negative" (click)="deleteProject(project)">Delete</sm-button>
+                </div>
+                <div class="content">
+                    {{ project.title }}
+                </div>
+            </sm-item>
+        </sm-list>
+    </div>
 
 </div>

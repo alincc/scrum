@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Project } from '../../models/project.interface';
 
 @Component({
-  selector: 'app-create-project-dialog',
+  selector: 'create-project-dialog',
   templateUrl: './create-project-dialog.component.html',
   styleUrls: ['./create-project-dialog.component.scss']
 })
@@ -14,7 +14,7 @@ export class CreateProjectDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MdDialogRef<CreateProjectDialogComponent>
+    // public dialogRef: MdDialogRef<CreateProjectDialogComponent>
   ) {}
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class CreateProjectDialogComponent implements OnInit {
   onSubmit(project: Project, valid: boolean): void {
     // Form need to be valid to submit
     if (valid) {
-      this.dialogRef.close(project);
+      // this.dialogRef.close(project);
     }
   }
 

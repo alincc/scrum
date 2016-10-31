@@ -43,6 +43,7 @@ import { combineReducers } from '@ngrx/store';
  * notation packages up all of the exports into a single object.
  */
 import * as fromProject from './project';
+import * as fromProjects from './projects';
 
 
 /**
@@ -51,6 +52,7 @@ import * as fromProject from './project';
  */
 export interface State {
   project: fromProject.State
+  projects: fromProjects.State
 }
 
 
@@ -63,6 +65,7 @@ export interface State {
  */
 const reducers = {
   project: fromProject.reducer,
+  projects: fromProjects.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -76,3 +79,9 @@ export function reducer(state: any, action: any) {
     return developmentReducer(state, action);
   }
 }
+
+export function getProjectsState(state$: Observable<State>) {
+  return state$.select(s => s.projects);
+}
+
+export const getProjects = compose(fromProjects.getProjects, getProjectsState);

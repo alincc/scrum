@@ -7,17 +7,27 @@ import { Project } from '../models/project.interface';
 import * as ProjectActions from '../actions/project.actions';
 
 export interface State {
-  project: Project
+    project: Project
 };
 
 const initialState: State = {
-  project: null
+    project: null
 };
 
 export function reducer(state = initialState, action: ProjectActions.Actions): State {
-  switch (action.type) {
-    default: {
-      return state;
+    switch (action.type) {
+
+        case ProjectActions.ActionTypes.SELECT_COMPLETE: {
+            const project = action.payload;
+            
+            return Object.assign({}, state, {
+                project: project
+            });
+        }
+
+        default: {
+            return state;
+        }
+
     }
-  }
 }
