@@ -31,7 +31,7 @@ export class ProjectComponent implements OnInit {
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
             let id = params['id']; // (+) converts string 'id' to a number
-
+            
             this.store.dispatch(new ProjectActions.GetAction(id));
         });
     }

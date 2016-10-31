@@ -18,12 +18,16 @@ import { ProjectService } from './services/project.service';
 import { ProjectEffects } from './effects/project';
 import { ProjectsEffects } from './effects/projects';
 import { ProjectComponent } from './containers/project/project.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProjectComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

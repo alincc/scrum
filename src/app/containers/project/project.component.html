@@ -1,7 +1,11 @@
 <div class="ui container">
 
-    <div *ngIf="project && (loaded$ | async)">
-        <h2>{{ project.title }}</h2>
-    </div>
+    <sm-segment >
+        <sm-loader [complete]="(loaded$ | async)" class="inverted" text="Loading..."></sm-loader>
+
+        <div *ngIf="project && (loaded$ | async)">
+            <h1 class="ui dividing header">{{ project.title }}</h1>
+        </div>
+    </sm-segment>
 
 </div>

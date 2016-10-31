@@ -1,5 +1,27 @@
 <div class="ui container">
 
+    <sm-segment class="raised">
+
+        <sm-button class="right floated tiny labeled primary" icon="add icon" (click)="myModalNormal.show({inverted: true})">Add Project</sm-button>
+
+        <h1 class="ui dividing header">Welcome</h1>
+
+        <div>
+            <sm-list>
+                <sm-item *ngFor="let project of projects$ | async">
+                    <div class="right floated content">
+                        <sm-button class="mini" (click)="selectProject(project)">Select</sm-button>
+                        <sm-button class="mini negative" (click)="deleteProject(project)">Delete</sm-button>
+                    </div>
+                    <div class="content">
+                        <a [routerLink]="['/project', project._id]">{{ project.title }}</a>
+                    </div>
+                </sm-item>
+            </sm-list>
+        </div>
+
+    </sm-segment>
+
     <sm-modal title="Hello from Modal" class="" icon="home" #myModalNormal>
 
         <modal-content>
@@ -9,7 +31,7 @@
                     <sm-input [formControl]="form.controls['title']" ngDefaultControl placeholder="Project title"></sm-input>
                 </div>
 
-                <sm-button class="positive" type="submit">Save</sm-button>
+                <sm-button class="positive" type="submit" (click)="myModalNormal.hide()">Save</sm-button>
             </form>
 
         </modal-content>
@@ -22,21 +44,5 @@
         </modal-actions>
 
     </sm-modal>
-
-    <button class="ui button primary" (click)="myModalNormal.show({inverted: true})">Click me</button>
-
-    <div>
-        <sm-list>
-            <sm-item *ngFor="let project of projects$ | async">
-                <div class="right floated content">
-                    <sm-button class="mini" (click)="selectProject(project)">Select</sm-button>
-                    <sm-button class="mini negative" (click)="deleteProject(project)">Delete</sm-button>
-                </div>
-                <div class="content">
-                    {{ project.title }}
-                </div>
-            </sm-item>
-        </sm-list>
-    </div>
 
 </div>
