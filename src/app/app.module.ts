@@ -15,6 +15,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { routes } from './routes';
 import { reducer } from './reducers';
 import { ProjectService } from './services/project.service';
+import { FeatureService } from './services/feature.service';
 import { SidebarService } from './services/sidebar.service';
 import { ProjectEffects } from './effects/project';
 import { ProjectsEffects } from './effects/projects';
@@ -22,6 +23,10 @@ import { ProjectComponent } from './containers/project/project.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { ProjectDetailComponent } from './common/project-detail/project-detail.component';
+import { BoardComponent } from './containers/board/board.component';
+import { StoryStatusPipe } from './pipes/story-status.pipe';
+import { FillPipe } from './pipes/fill.pipe';
+import { BoardDetailComponent } from './common/board-detail/board-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import { ProjectDetailComponent } from './common/project-detail/project-detail.c
     HeaderComponent,
     FooterComponent,
     ProjectDetailComponent,
+    BoardComponent,
+    StoryStatusPipe,
+    StoryStatusPipe,
+    FillPipe,
+    BoardDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +59,7 @@ import { ProjectDetailComponent } from './common/project-detail/project-detail.c
   providers: [
     ProjectService,
     SidebarService,
+    FeatureService,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

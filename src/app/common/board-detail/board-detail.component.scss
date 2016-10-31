@@ -1,0 +1,17 @@
+.user-story-add-btn {
+    visibility: hidden;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.feature-stories {
+    position: relative;
+    padding-bottom: 50px !important;
+
+    &:hover {
+        .user-story-add-btn {
+            visibility: visible;
+        }
+    }
+}

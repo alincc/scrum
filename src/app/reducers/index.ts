@@ -84,6 +84,7 @@ export function getProjectState(state$: Observable<State>) {
   return state$.select(s => s.project);
 }
 
+export const getProjectSelected = compose(fromProject.getSelected, getProjectState);
 export const getProject = compose(fromProject.getProject, getProjectState);
 export const getProjectLoading = compose(fromProject.getLoading, getProjectState);
 export const getProjectLoaded = compose(fromProject.getLoaded, getProjectState);

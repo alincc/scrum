@@ -18,7 +18,8 @@ export class ProjectEffects {
     @Effect()
     select$: Observable<Action> = this.actions$
         .ofType(ProjectActions.ActionTypes.SELECT)
-        .map(action => new ProjectActions.SelectCompleteAction(action.payload));
+        .switchMap((action) => this.svc.get(action.payload._id))
+        .map(project => new ProjectActions.SelectCompleteAction(project));
 
     @Effect()
     get$: Observable<Action> = this.actions$
@@ -31,4 +32,19 @@ export class ProjectEffects {
         .ofType(ProjectActions.ActionTypes.UPDATE)
         .switchMap((action) => this.svc.update(action.payload))
         .map(project => new ProjectActions.UpdateCompleteAction(project));
+
+    @Effect()
+    addFeature$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.ADD_FEATURE)
+        .switchMap((action) => {
+            return this.svc.addFeature(action.payload.project, action.payload.feature)
+        })
+        .map(feature => new ProjectActions.AddFeatureCompleteAction(feature));
+
+    @Effect()
+    removeFeature$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.DELETE_FEATURE)
+        .switchMap((action) => this.svc.deleteFeature(action.payload.project, action.payload.feature))
+        .map(feature => new ProjectActions.DeleteFeatureCompleteAction(feature));
+
 }

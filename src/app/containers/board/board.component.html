@@ -1,0 +1,20 @@
+<div class="ui container">
+
+    <h1 class="ui dividing header">Board</h1>
+
+    <sm-message *ngFor="let message of messages" [class]="message.type" [icon]="message.icon">
+        <message-header>
+            {{message?.title}}
+        </message-header>
+        <message-content>
+            {{message?.text}}
+        </message-content>
+    </sm-message>
+
+    <board-detail [project]="project"
+        (addMessage)="messageEvent($event)"
+        (featureEmitter)="addFeature($event)"
+        (deleteFeatureEmitter)="deleteFeature($event)"
+        (storyEmitter)="addStory($event)">
+    </board-detail>
+</div>

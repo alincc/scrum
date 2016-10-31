@@ -3,12 +3,12 @@ import { Project } from '../models/project.interface';
 import { type } from '../util';
 
 export const ActionTypes = {
-    LOAD:             type('[Project] Load'),
-    LOAD_COMPLETE:    type('[Project] Load Complete'),
-    ADD:              type('[Project] Add'),
-    ADD_COMPLETE:     type('[Project] Add Complete'),
-    DELETE:           type('[Project] Delete'),
-    DELETE_COMPLETE:  type('[Project] Delete Complete'),
+    LOAD:                   type('[Project] Load'),
+    LOAD_COMPLETE:          type('[Project] Load Complete'),
+    ADD:                    type('[Project] Add'),
+    ADD_COMPLETE:           type('[Project] Add Complete'),
+    DELETE:                 type('[Project] Delete'),
+    DELETE_COMPLETE:        type('[Project] Delete Complete'),
 };
 
 export class LoadAction implements Action {
@@ -44,7 +44,6 @@ export class DeleteCompleteAction implements Action {
 
     constructor(public payload: Project) {}
 }
-
 
 export type Actions
     = LoadAction

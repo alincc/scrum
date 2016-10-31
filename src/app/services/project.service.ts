@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Project } from '../models/project.interface';
+import { Feature } from '../models/feature.interface';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -34,6 +35,16 @@ export class ProjectService {
 
     delete(project: Project): Observable<Project> {
         return this.http.delete('/api/project/' + project._id)
+            .map((res: Response) => res.json());
+    }
+
+    addFeature(project: Project, feature: any): Observable<Feature> {
+        return this.http.put('/api/project/' + project._id + '/add-feature', feature)
+            .map((res: Response) => res.json());
+    }
+
+    deleteFeature(project: Project, feature: Feature): Observable<Feature> {
+        return this.http.delete('/api/project/' + project._id + '/remove-feature/' + feature._id)
             .map((res: Response) => res.json());
     }
 

@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.fb.group({
-            title: ['', Validators.required]
+            title: ['', Validators.required],
+            description: [''],
         });
 
         this.projects$ = this.store.let(fromRoot.getProjects);

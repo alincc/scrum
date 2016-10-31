@@ -1,0 +1,70 @@
+<table class="ui celled table" *ngIf="project">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Open</th>
+            <th>Planned</th>
+            <th>In progress</th>
+            <th>In testing</th>
+            <th>Complete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let feature of project.features" class="top aligned">
+            <td>
+                <sm-button class="mini negative" icon="delete" (click)="deleteFeature(feature)"></sm-button>
+                <h5>{{ feature.title }}</h5>
+            </td>
+            <td *ngFor="let i of (nrOfStates | fill); let idx = index;" class="feature-stories">
+
+                <sm-popup #storyPopup>
+                    <sm-card class="card">
+                        <card-title> Add User Story </card-title>
+                        <card-content>
+                            <div class="ui input">
+                                <input type="text" #story>
+                            </div>
+                        </card-content>
+                        <sm-button class="bottom attached fluid positive" (click)="addStory(feature, (idx + 1), story.value)" icon="add">Add</sm-button>
+                    </sm-card>
+                </sm-popup>
+
+
+                <sm-cards *ngIf="feature.stories.length">
+                    <sm-card class="ui card" *ngFor="let story of feature.stories | storyStatus:(idx + 1)">
+                        <card-content>{{ story.title }}</card-content>
+                        <card-extra>[0h]</card-extra>
+                    </sm-card>
+                </sm-cards>
+
+                <sm-button class="small positive user-story-add-btn primary" (click)="storyPopup.show($event, {position: 'right center'})" icon="add"></sm-button>
+            </td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>
+                <sm-button class="small positive" (click)="featurePopup.show($event, {position: 'right center'})" icon="add"></sm-button>
+
+                <sm-popup #featurePopup>
+                    <sm-card class="card">
+                        <card-title> Add feature </card-title>
+                        <card-content>
+                            <div class="ui input">
+                                <input type="text" #feature>
+                            </div>
+                        </card-content>
+                        <sm-button class="bottom attached fluid positive" (click)="addFeature(feature.value)" icon="add">Add</sm-button>
+                    </sm-card>
+                </sm-popup>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>

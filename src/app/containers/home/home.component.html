@@ -31,6 +31,10 @@
                     <sm-input [formControl]="form.controls['title']" ngDefaultControl placeholder="Project title"></sm-input>
                 </div>
 
+                <div class="field">
+                    <sm-input [formControl]="form.controls['description']" ngDefaultControl placeholder="Project description"></sm-input>
+                </div>
+
                 <sm-button class="positive" type="submit" (click)="myModalNormal.hide()">Save</sm-button>
             </form>
 

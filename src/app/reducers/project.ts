@@ -58,11 +58,36 @@ export function reducer(state = initialState, action: ProjectActions.Actions): S
             });
         }
 
+        case ProjectActions.ActionTypes.ADD_FEATURE_COMPLETE: {
+            const feature = action.payload;
+
+            return Object.assign({}, state, {
+                selected: Object.assign({}, state.selected, {
+                    features: [...state.selected.features, feature]
+                })
+            });
+        }
+
+        case ProjectActions.ActionTypes.DELETE_FEATURE_COMPLETE: {
+            const feature = action.payload;
+
+            return Object.assign({}, state, {
+                selected: Object.assign({}, state.selected, {
+                    features: state.selected.features.filter(obj => obj._id !== feature.featureId)
+                })
+            });
+
+        }
+
         default: {
             return state;
         }
 
     }
+}
+
+export function getSelected(state$: Observable<State>) {
+    return state$.select(s => s.selected);
 }
 
 export function getProject(state$: Observable<State>) {
