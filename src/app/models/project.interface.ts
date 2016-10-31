@@ -1,5 +1,8 @@
 export interface Project {
   _id?: string,
+  __v?: number,
   title: string,
-  __v?: number
+  description: string,
+  created_at?: string,
+  updated_at?: string,
 };

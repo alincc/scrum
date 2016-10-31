@@ -7,6 +7,8 @@ export const ActionTypes = {
     SELECT_COMPLETE:    type('[Project] Select Complete'),
     GET:                type('[Project] Get'),
     GET_COMPLETE:       type('[Project] Get Complete'),
+    UPDATE:             type('[Project] Update'),
+    UPDATE_COMPLETE:    type('[Project] Update Complete'),
 };
 
 export class SelectAction implements Action {
@@ -33,8 +35,22 @@ export class GetCompleteAction implements Action {
     constructor(public payload: Project) {}
 }
 
+export class UpdateAction implements Action {
+    type = ActionTypes.UPDATE;
+
+    constructor(public payload: Project) {}
+}
+
+export class UpdateCompleteAction implements Action {
+    type = ActionTypes.UPDATE_COMPLETE;
+
+    constructor(public payload: Project) {}
+}
+
 export type Actions
     = SelectAction
     | SelectCompleteAction
     | GetAction
-    | GetCompleteAction;
+    | GetCompleteAction
+    | UpdateAction
+    | UpdateCompleteAction;

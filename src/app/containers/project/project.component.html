@@ -1,11 +1,8 @@
 <div class="ui container">
 
-    <sm-segment >
-        <sm-loader [complete]="(loaded$ | async)" class="inverted" text="Loading..."></sm-loader>
-
-        <div *ngIf="project && (loaded$ | async)">
-            <h1 class="ui dividing header">{{ project.title }}</h1>
-        </div>
-    </sm-segment>
+    <project-detail [project]="project"
+        [loaded]="loaded$ | async"
+        (updateAction)="update($event)">
+    </project-detail>
 
 </div>

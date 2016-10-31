@@ -1,0 +1,53 @@
+<sm-segment>
+    <sm-loader [complete]="loaded" class="inverted" text="Loading..."></sm-loader>
+
+    <div *ngIf="project && loaded">
+
+        <h1 class="ui dividing header" (click)="toggleEdit('title')" *ngIf="!editing.title">{{ project.title }}</h1>
+
+        <div *ngIf="editing.title" class="ui input">
+            <input [(ngModel)]="project.title" type="text">
+
+            <sm-button (click)="save('title')" class="right floated primary">Save</sm-button>
+            <sm-button (click)="toggleEdit('title')" class="right floated">Cancel</sm-button>
+        </div>
+
+
+        <div>
+            <sm-button class="right floated mini primary" icon="edit icon" (click)="toggleEdit('description')">Edit</sm-button>
+            <h2 class="ui dividing header">Description</h2>
+
+            <div>
+                <div *ngIf="!editing.description">
+                    <div *ngIf="project.description">
+                        {{ project.description }}
+                    </div>
+                    <div *ngIf="!project.description">
+                        <em>No description added yet</em>
+                    </div>
+                </div>
+
+                <div *ngIf="editing.description">
+
+                    <div class="ui form">
+                        <div class="field">
+                            <textarea [(ngModel)]="project.description"></textarea>
+                        </div>
+                        <sm-button class="small positive" (click)="save('description')">Save</sm-button>
+                        <sm-button class="small" (click)="toggleEdit('description')">Cancel</sm-button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <table class="ui very basic table">
+            <tr>
+                <th>Created at</th>
+                <td>{{ project.created_at | date }}</td>
+            </tr>
+        </table>
+
+    </div>
+</sm-segment>

@@ -22,6 +22,11 @@ export class ProjectService {
             .map((res: Response) => res.json());
     }
 
+    update(project: Project): Observable<Project> {
+        return this.http.put('/api/project/' + project._id, project)
+            .map((res: Response) => res.json());
+    }
+
     get(id): Observable<Project> {
         return this.http.get('/api/project/' + id)
             .map((res: Response) => res.json());

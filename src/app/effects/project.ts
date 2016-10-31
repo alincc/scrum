@@ -25,4 +25,10 @@ export class ProjectEffects {
         .ofType(ProjectActions.ActionTypes.GET)
         .switchMap((action) => this.svc.get(action.payload))
         .map(project => new ProjectActions.GetCompleteAction(project));
+
+    @Effect()
+    update$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.UPDATE)
+        .switchMap((action) => this.svc.update(action.payload))
+        .map(project => new ProjectActions.UpdateCompleteAction(project));
 }

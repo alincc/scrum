@@ -48,6 +48,16 @@ export function reducer(state = initialState, action: ProjectActions.Actions): S
             });
         }
 
+        case ProjectActions.ActionTypes.UPDATE_COMPLETE: {
+            const project = action.payload;
+
+            return Object.assign({}, state, {
+                project: project,
+                loading: false,
+                loaded: true,
+            });
+        }
+
         default: {
             return state;
         }

@@ -25,15 +25,21 @@ export class ProjectComponent implements OnInit {
         this.loading$ = store.let(fromRoot.getProjectLoading);
         this.loaded$ = store.let(fromRoot.getProjectLoaded);
         this.store.let(fromRoot.getProject)
-            .subscribe(project => this.project = project);
+            .subscribe(project => {
+                this.project = project;
+            });
     }
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
             let id = params['id']; // (+) converts string 'id' to a number
-            
+
             this.store.dispatch(new ProjectActions.GetAction(id));
         });
     }
 
+    // Update action from child componnent
+    update(event: Project): void {
+        this.store.dispatch(new ProjectActions.UpdateAction(event));
+    }
 }

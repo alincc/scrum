@@ -21,6 +21,7 @@ import { ProjectsEffects } from './effects/projects';
 import { ProjectComponent } from './containers/project/project.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { ProjectDetailComponent } from './common/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FooterComponent } from './common/footer/footer.component';
     ProjectComponent,
     HeaderComponent,
     FooterComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,
