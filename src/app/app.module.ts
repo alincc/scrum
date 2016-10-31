@@ -15,6 +15,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { routes } from './routes';
 import { reducer } from './reducers';
 import { ProjectService } from './services/project.service';
+import { SidebarService } from './services/sidebar.service';
 import { ProjectEffects } from './effects/project';
 import { ProjectsEffects } from './effects/projects';
 import { ProjectComponent } from './containers/project/project.component';
@@ -45,6 +46,7 @@ import { FooterComponent } from './common/footer/footer.component';
   ],
   providers: [
     ProjectService,
+    SidebarService,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

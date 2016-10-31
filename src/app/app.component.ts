@@ -14,7 +14,7 @@ export class AppComponent {
 
     constructor(private store: Store<State>) {
         this.store.select('project').subscribe(project => this.project = project);
-        
+
         this.store.dispatch(new ProjectsActions.LoadAction());
     }
 }
