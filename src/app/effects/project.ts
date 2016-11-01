@@ -61,4 +61,10 @@ export class ProjectEffects {
         })
         .map(story => new ProjectActions.AddStoryCompleteAction(story));
 
+    @Effect()
+    deleteStory$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.DELETE_STORY)
+        .switchMap(action => this.featureService.deleteStory(action.payload))
+        .map(story => new ProjectActions.DeleteStoryCompleteAction(story));
+
 }

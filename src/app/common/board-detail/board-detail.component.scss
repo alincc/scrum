@@ -33,6 +33,15 @@ table {
     }
 }
 
+.user-story {
+    i.remove.icon {
+        &:hover {
+            color: red;
+            cursor: pointer;
+        }
+    }
+}
+
 .feature-stories {
     position: relative;
     padding-bottom: 50px !important;

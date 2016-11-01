@@ -17,6 +17,8 @@ export const ActionTypes = {
     DELETE_FEATURE_COMPLETE:type('[Project] Delete Feature Complete'),
     ADD_STORY:              type('[Project] Add Story'),
     ADD_STORY_COMPLETE:     type('[Project] Add Story Complete'),
+    DELETE_STORY:           type('[Project] Delete Story'),
+    DELETE_STORY_COMPLETE:  type('[Project] Delete Story Complete'),
 };
 
 export class SelectAction implements Action {
@@ -91,6 +93,18 @@ export class AddStoryCompleteAction implements Action {
     constructor(public payload: any) {}
 }
 
+export class DeleteStoryAction implements Action {
+    type = ActionTypes.DELETE_STORY;
+
+    constructor(public payload: any) {}
+}
+
+export class DeleteStoryCompleteAction implements Action {
+    type = ActionTypes.DELETE_STORY_COMPLETE;
+
+    constructor(public payload: any) {}
+}
+
 export type Actions
     = SelectAction
     | SelectCompleteAction
@@ -103,4 +117,6 @@ export type Actions
     | DeleteFeatureAction
     | DeleteFeatureCompleteAction
     | AddStoryAction
-    | AddStoryCompleteAction;
+    | AddStoryCompleteAction
+    | DeleteStoryAction
+    | DeleteStoryCompleteAction;

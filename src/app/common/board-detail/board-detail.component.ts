@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../../models/project.interface';
 import { Feature } from '../../models/feature.interface';
+import { UserStory } from '../../models/user-story.interface';
 
 @Component({
     selector: 'board-detail',
@@ -13,6 +14,7 @@ export class BoardDetailComponent implements OnInit {
     @Output() addMessage = new EventEmitter();
     @Output() featureEmitter = new EventEmitter();
     @Output() deleteFeatureEmitter = new EventEmitter();
+    @Output() deleteStoryEmitter = new EventEmitter();
     @Output() storyEmitter = new EventEmitter();
 
     private nrOfStates: number = 5;
@@ -43,6 +45,10 @@ export class BoardDetailComponent implements OnInit {
         }
 
         this.storyEmitter.emit(data);
+    }
+
+    removeStory(feature: Feature, story: UserStory): void {
+        this.deleteStoryEmitter.emit({feature: feature, story: story});
     }
 
 }

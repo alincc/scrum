@@ -13,4 +13,9 @@ export class FeatureService {
         return this.http.put('/api/feature/' + feature._id + '/add-story', story)
             .map((res: Response) => res.json());
     }
+
+    deleteStory(data): Observable<UserStory> {
+        return this.http.delete('/api/story/remove/' + data.story._id + '/feature/' + data.feature._id)
+            .map((res: Response) => res.json());
+    }
 }

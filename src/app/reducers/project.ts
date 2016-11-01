@@ -98,6 +98,23 @@ export function reducer(state = initialState, action: ProjectActions.Actions): S
             });
         }
 
+        case ProjectActions.ActionTypes.DELETE_STORY_COMPLETE: {
+            const story = action.payload.story;
+            const feature = action.payload.feature;
+            const index = state.selected.features.findIndex(obj => obj._id == feature._id);
+
+            return Object.assign({}, state, {
+                selected: Object.assign({}, state.selected, {
+                    features: [
+                        ...state.selected.features.slice(0, index),
+                        feature,
+                        ...state.selected.features.slice(index + 1)
+                    ]
+                })
+            });
+
+        }
+
         default: {
             return state;
         }

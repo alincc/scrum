@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Project } from '../../models/project.interface';
 import { Feature } from '../../models/feature.interface';
+import { UserStory } from '../../models/user-story.interface';
 import * as fromRoot from '../../reducers';
 import * as ProjectActions from '../../actions/project.actions';
 import { ProjectService } from '../../services/project.service';
@@ -55,6 +56,10 @@ export class BoardComponent implements OnInit {
 
     addStory(data) {
         this.store.dispatch(new ProjectActions.AddStoryAction({project: this.project, feature: data.feature, story: data.story}))
+    }
+
+    deleteStory(data): void {
+        this.store.dispatch(new ProjectActions.DeleteStoryAction({feature: data.feature, story: data.story}));
     }
 
     messageEvent(message) {

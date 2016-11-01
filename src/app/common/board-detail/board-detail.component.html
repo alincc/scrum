@@ -34,8 +34,13 @@
 
 
                 <sm-cards *ngIf="feature.stories.length">
-                    <sm-card class="ui card" *ngFor="let story of feature.stories | storyStatus:(idx + 1)">
-                        <card-content>{{ story.title }}</card-content>
+                    <sm-card class="ui card user-story" *ngFor="let story of feature.stories | storyStatus:(idx + 1)">
+                        <card-content>
+                            <div class="right floated meta">
+                                <i class="remove icon" (click)="removeStory(feature, story)"></i>
+                            </div>
+                            <p>{{ story.title }}</p>
+                        </card-content>
                         <card-extra>[0h]</card-extra>
                     </sm-card>
                 </sm-cards>
