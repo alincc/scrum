@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../models/project.interface';
 import { Feature } from '../models/feature.interface';
+import { UserStory } from '../models/user-story.interface';
 import { type } from '../util';
 
 export const ActionTypes = {
@@ -14,6 +15,8 @@ export const ActionTypes = {
     ADD_FEATURE_COMPLETE:   type('[Project] Add Feature Complete'),
     DELETE_FEATURE:         type('[Project] Delete Feature'),
     DELETE_FEATURE_COMPLETE:type('[Project] Delete Feature Complete'),
+    ADD_STORY:              type('[Project] Add Story'),
+    ADD_STORY_COMPLETE:     type('[Project] Add Story Complete'),
 };
 
 export class SelectAction implements Action {
@@ -76,6 +79,18 @@ export class DeleteFeatureCompleteAction implements Action {
     constructor(public payload: any) {}
 }
 
+export class AddStoryAction implements Action {
+    type = ActionTypes.ADD_STORY;
+
+    constructor(public payload: {project: Project, feature: Feature, story: UserStory}) {}
+}
+
+export class AddStoryCompleteAction implements Action {
+    type = ActionTypes.ADD_STORY_COMPLETE;
+
+    constructor(public payload: any) {}
+}
+
 export type Actions
     = SelectAction
     | SelectCompleteAction
@@ -86,4 +101,6 @@ export type Actions
     | AddFeatureAction
     | AddFeatureCompleteAction
     | DeleteFeatureAction
-    | DeleteFeatureCompleteAction;
+    | DeleteFeatureCompleteAction
+    | AddStoryAction
+    | AddStoryCompleteAction;

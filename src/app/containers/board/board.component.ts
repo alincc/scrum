@@ -54,8 +54,7 @@ export class BoardComponent implements OnInit {
     }
 
     addStory(data) {
-        this.featureService.addStory(data.feature, data.story)
-            .subscribe(res => console.log(res));
+        this.store.dispatch(new ProjectActions.AddStoryAction({project: this.project, feature: data.feature, story: data.story}))
     }
 
     messageEvent(message) {

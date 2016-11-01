@@ -23,8 +23,20 @@ router.put('/:id/add-story', (req, res) => {
         feature.save((err) => {
             if (err) return res.status(500).json(err);
 
-            return res.json(feature);
+            // return res.json({ feature: feature, story: story });
         });
+
+        FeatureModel.populate(feature, {
+            path: 'stories',
+            model: 'UserStory'
+        }, function(err) {
+            if (err) return res.status(500).json(err);
+
+            // res.json(obj);
+            return res.json({ feature: feature, story: story });
+        });
+
+
     });
 
 });

@@ -4,6 +4,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { ProjectService } from '../services/project.service';
+import { FeatureService } from '../services/feature.service';
 import * as ProjectActions from '../actions/project.actions';
 import { Project } from '../models/project.interface';
 
@@ -12,7 +13,8 @@ export class ProjectEffects {
 
     constructor(
         private actions$: Actions,
-        private svc: ProjectService
+        private svc: ProjectService,
+        private featureService: FeatureService
     ) { }
 
     @Effect()
@@ -49,5 +51,14 @@ export class ProjectEffects {
         .ofType(ProjectActions.ActionTypes.DELETE_FEATURE)
         .switchMap((action) => this.svc.deleteFeature(action.payload.project, action.payload.feature))
         .map(feature => new ProjectActions.DeleteFeatureCompleteAction(feature));
+
+
+    @Effect()
+    addStory$: Observable<Action> = this.actions$
+        .ofType(ProjectActions.ActionTypes.ADD_STORY)
+        .switchMap((action) => {
+            return this.featureService.addStory(action.payload.feature, action.payload.story)
+        })
+        .map(story => new ProjectActions.AddStoryCompleteAction(story));
 
 }
