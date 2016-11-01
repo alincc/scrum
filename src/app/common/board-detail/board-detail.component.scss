@@ -5,6 +5,34 @@
     right: 10px;
 }
 
+.feature-item {
+    position: relative;
+
+    h5 {
+        margin: 0;
+    }
+
+    .feature-add-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: red;
+
+        &:hover {
+            color: #ccc;
+            cursor: pointer;
+        }
+    }
+}
+
+table {
+    tfoot {
+        td {
+            border-top: 1px solid rgba(34, 36, 38, 0.1);
+        }
+    }
+}
+
 .feature-stories {
     position: relative;
     padding-bottom: 50px !important;

@@ -12,8 +12,10 @@
 
     <tbody>
         <tr *ngFor="let feature of project.features" class="top aligned">
-            <td>
-                <sm-button class="mini negative" icon="delete" (click)="deleteFeature(feature)"></sm-button>
+            <td class="feature-item">
+                <a (click)="deleteFeature(feature)" class="feature-add-btn" smDirTooltip="Remove feature" smDirPosition="right center">
+                    <i class="remove icon"></i>
+                </a>
                 <h5>{{ feature.title }}</h5>
             </td>
             <td *ngFor="let i of (nrOfStates | fill); let idx = index;" class="feature-stories">
